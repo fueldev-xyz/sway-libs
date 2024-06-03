@@ -1,14 +1,14 @@
-# Getting Started
+# 入门指南
 
-## Adding Sway Libs as a Dependency
+## 将 Sway Libs 作为依赖项添加
 
-To import any library, the following dependency should be added to the project's `Forc.toml` file under `[dependencies]`.
+要导入任何库，请在项目的`Forc.toml`文件中的`[dependencies]`下添加以下依赖项。
 
 ```sway
 sway_libs = { git = "https://github.com/FuelLabs/sway-libs", tag = "v0.1.0" }
 ```
 
-For reference, here is a complete `Forc.toml` file:
+以下是完整的`Forc.toml`文件示例：
 
 ```sway
 [project]
@@ -21,53 +21,53 @@ name = "MyProject"
 sway_libs = { git = "https://github.com/FuelLabs/sway-libs", tag = "v0.1.0" }
 ```
 
-> **NOTE:** Be sure to set the tag to the latest release.
+> **注意:** 请确保将标签设置为最新版本。
 
-## Importing Sway Libs to Your Project
+## 导入 Sway Libs 到您的项目
 
-Once Sway Libs is a dependency to your project, you may then import a library in your Sway Smart Contract as so:
+一旦 Sway Libs 成为项目的依赖项，您可以在您的 Sway 智能合约中导入库，如下所示：
 
 ```sway
 use sway_libs::<library>::<library_function>;
 ```
 
-For example, to import the `only_owner()` from the Ownership Library, use the following statement at the top of your Sway file:
+例如，要从 Ownership 库导入`only_owner()`函数，请在您的 Sway 文件顶部使用以下语句：
 
 ```sway
 use sway_libs::ownership::only_owner;
 ```
 
-> **NOTE:**
-> All projects currently use `forc v0.60.0`, `fuels-rs v0.62.0` and `fuel-core 0.26.0`.
+> **注意：**
+> 所有项目目前使用`forc v0.60.0`，`fuels-rs v0.62.0`和`fuel-core 0.26.0`。
 
-## Using Sway Libs
+## 使用 Sway Libs
 
-Once the library you require has been imported to your project, you may call or use any functions and structures the library provides.
+一旦您的项目已经导入所需的库，您可以调用或使用库提供的任何函数和结构。
 
-In the following example, we import the Pausable Library and implement the `Pausable` ABI with it's associated functions.
+在下面的示例中，我们导入了 Pausable 库，并为其实现了`Pausable` ABI 与其关联的函数。
 
 ```sway
 use sway_libs::pausable::{_is_paused, _pause, _unpause, Pausable};
 
-// Implement the Pausable ABI for our contract
-impl Pausable for Contract {
-    #[storage(write)]
-    fn pause() {
-        _pause(); // Call the provided pause function.
-    }
+// 为我们的合约实现 Pausable ABI
+impl Pausable for Contract { #[storage(write)]
+fn pause() {
+_pause(); // 调用提供的暂停函数。
+}
 
     #[storage(write)]
     fn unpause() {
-        _unpause(); // Call the provided unpause function.
+        _unpause(); // 调用提供的取消暂停函数。
     }
 
     #[storage(read)]
     fn is_paused() -> bool {
-        _is_paused() // Call the provided is paused function.
+        _is_paused() // 调用提供的暂停状态函数。
     }
+
 }
 ```
 
-Any instructions related to using a specific library should be found within the [libraries](../libraries.md) section of the Sway Libs Book.
+有关使用特定库的任何指令应在 Sway Libs 书籍的[libraries](../libraries.md)部分找到。
 
-For implementation details on the libraries please see the [Sway Libs Docs](https://fuellabs.github.io/sway-libs/master/sway_libs/).
+有关库的实现细节，请参阅[Sway Libs 文档](https://fuellabs.github.io/sway-libs/master/sway_libs/)。

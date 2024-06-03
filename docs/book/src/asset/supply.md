@@ -1,46 +1,46 @@
-# Supply Functionality
+# 供应功能
 
-For implementation details on the Asset Library supply functionality please see the [Sway Libs Docs](https://fuellabs.github.io/sway-libs/master/sway_libs/asset/supply/index.html).
+有关资产库供应功能的实现详细信息，请参阅[Sway Libs 文档](https://fuellabs.github.io/sway-libs/master/sway_libs/asset/supply/index.html)。
 
-## Importing the Asset Library Supply Functionality
+## 导入资产库供应功能
 
-In order to use the Asset Library, Sway Libs and [Sway Standards](https://github.com/FuelLabs/sway-standards) must be added to the `Forc.toml` file and then imported into your Sway project. To add Sway Libs as a dependency to the `Forc.toml` file in your project please see the [Getting Started](../getting_started/index.md). To add Sway Standards as a dependency please see the [Sway Standards Book](https://github.com/FuelLabs/sway-standards).
+要使用资产库，必须将 Sway Libs 和[Sway Standards](https://github.com/FuelLabs/sway-standards)添加到`Forc.toml`文件中，然后导入到您的 Sway 项目中。要将 Sway Libs 添加为项目的依赖项，请参阅[入门](../getting_started/index.md)。要添加 Sway Standards 作为依赖项，请参阅[Sway Standards Book](https://github.com/FuelLabs/sway-standards)。
 
-To import the Asset Library Supply Functionality and [SRC-3](https://github.com/FuelLabs/sway-standards/blob/master/SRCs/src-3.md) Standard to your Sway Smart Contract, add the following to your Sway file:
+要导入资产库供应功能和[SRC-3](https://github.com/FuelLabs/sway-standards/blob/master/SRCs/src-3.md)标准到您的 Sway 智能合约，请在您的 Sway 文件中添加以下内容：
 
 ```sway
 {{#include ../../../../examples/asset/supply_docs/src/main.sw:import}}
 ```
 
-## Integration with the SRC-3 Standard
+## 与 SRC-3 标准集成
 
-The [SRC-3](https://github.com/FuelLabs/sway-standards/blob/master/SRCs/src-3.md) definition states that the following abi implementation is required for any Native Asset on Fuel which mints and burns tokens:
+[SCR-3](https://github.com/FuelLabs/sway-standards/blob/master/SRCs/src-3.md)定义规定了 Fuel 上任何原生资产都必须实现以下 abi：它们用于铸造和销毁代币。
 
 ```sway
 {{#include ../../../../examples/asset/supply_docs/src/main.sw:src3_abi}}
 ```
 
-The Asset Library has the following complimentary functions for each function in the `SRC3` abi:
+资产库为`SRC3` abi 中的每个函数提供了以下补充功能：
 
 - `_mint()`
 - `_burn()`
 
-> **NOTE** The `_mint()` and `_burn()` functions will mint and burn assets *unconditionally*. External checks should be applied to restrict the minting and burning of assets.
+> **注意** `_mint()` 和 `_burn()` 函数将无条件铸造和销毁资产。应应用外部检查以限制资产的铸造和销毁。
 
-## Setting Up Storage
+## 设置存储
 
-Once imported, the Asset Library's supply functionality should be available. To use them, be sure to add the storage block bellow to your contract which enables the [SRC-3](https://github.com/FuelLabs/sway-standards/blob/master/SRCs/src-3.md) standard.
+一旦导入，资产库的供应功能应该可用。要使用它们，请确保将下面的存储块添加到启用[SCR-3](https://github.com/FuelLabs/sway-standards/blob/master/SRCs/src-3.md)标准的合约中。
 
 ```sway
 {{#include ../../../../examples/asset/supply_docs/src/main.sw:src3_storage}}
 ```
 
-## Implementing the SRC-3 Standard with the Asset Library
+## 使用资产库实现 SRC-3 标准
 
-To use a base function, simply pass the `StorageKey` from the prescribed storage block. The example below shows the implementation of the [SRC-3](https://github.com/FuelLabs/sway-standards/blob/master/SRCs/src-3.md) standard in combination with the Asset Library with no user defined restrictions or custom functionality. It is recommended that the [Ownership Library](../ownership/index.md) is used in conjunction with the Asset Library;s supply functionality to ensure only a single user has permissions to mint an Asset.
+要使用基本功能，只需传递预先定义的存储块中的`StorageKey`。下面的示例展示了如何将[SCR-3](https://github.com/FuelLabs/sway-standards/blob/master/SRCs/src-3.md)标准与资产库结合使用，而不定义用户限制或自定义功能。建议与资产库的供应功能一起使用[Ownership Library](../ownership/index.md)，以确保只有一个用户具有铸造资产的权限。
 
 ```sway
 {{#include ../../../../examples/asset/basic_src3/src/main.sw:basic_src3}}
 ```
 
-> **NOTE** The `_mint()` and `_burn()` functions will mint and burn assets *unconditionally*. External checks should be applied to restrict the minting and burning of assets.
+> **注意** `_mint()` 和 `_burn()` 函数将无条件铸造和销毁资产。应应用外部检查以限制资产的铸造和销毁。

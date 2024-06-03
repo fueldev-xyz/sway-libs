@@ -1,22 +1,22 @@
-# Running Tests
+# 运行测试
 
-There are two sets of tests that should be run: inline tests and sdk-harness tests.
+需要运行两组测试：内联测试和 sdk-harness 测试。
 
-In order to run the inline tests, make sure you are in the `libs/` folder of this repository `sway-libs/libs/<you are here>`.
+要运行内联测试，请确保您位于此存储库的`libs/`文件夹中 `sway-libs/libs/<您在这里>`。
 
-Run the tests:
+运行测试：
 
 ```bash
 forc test
 ```
 
-Once these tests have passed, make sure you are in the `tests/` folder of this repository `sway-libs/tests/<you are here>`.
+一旦这些测试通过，请确保您位于此存储库的`tests/`文件夹中 `sway-libs/tests/<您在这里>`。
 
-Run the tests:
+运行测试：
 
 ```bash
 forc test && cargo test
 ```
 
-> **NOTE:**
-> This may take a while depending on your hardware, future improvements to Sway will decrease build times. After this has been run once, individual test projects may be built on their own to save time.
+> **注意：**
+> 这可能需要一些时间，具体取决于您的硬件，未来对 Sway 的改进将减少构建时间。运行一次后，可以单独构建各个测试项目以节省时间。

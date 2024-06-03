@@ -1,8 +1,8 @@
 # Sway Libraries
 
-The purpose of Sway Libraries is to contain libraries which users can import and use that are not part of the standard library.
+Sway Libraries 的目的是包含用户可以导入并使用的库，这些库不是标准库的一部分。
 
-These libraries contain helper functions and other tools valuable to blockchain development.
+这些库包含对区块链开发有价值的辅助函数和其他工具。
 
-> **NOTE:**
-> Sway is a language under heavy development therefore the libraries may not be the most ergonomic. Over time they should receive updates / improvements in order to demonstrate how Sway can be used in real use cases.
+> **注意：**
+> Sway 是一种正在积极开发中的语言，因此这些库可能不是最符合人体工程学的。随着时间的推移，它们应该会接收更新/改进，以展示 Sway 如何在真实用例中使用。

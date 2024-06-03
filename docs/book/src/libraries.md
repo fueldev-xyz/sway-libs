@@ -1,65 +1,65 @@
-# Libraries
+# 库(Libraries)
 
-There are several types of libraries that Sway Libs encompases. These include libraries that provide convenience functions, standards supporting libraries, data type libraries, security functionality libraries.
+Sway Libs 包含几种类型的库。这些包括提供便利函数的库、支持标准的库、数据类型库和安全功能库。
 
-For implementation details on the libraries please see the [Sway Libs Docs](https://fuellabs.github.io/sway-libs/master/sway_libs/).
+有关库的实现细节，请参阅[Sway Libs 文档](https://fuellabs.github.io/sway-libs/master/sway_libs/)。
 
-## Assets Libraries
+## 资产库
 
-Asset Libraries are any libraries that use [Native Assets](https://docs.fuel.network/docs/sway/blockchain-development/native_assets) on the Fuel Network.
+资产库是任何在 Fuel Network 上使用[本地资产](https://docs.fuel.network/docs/sway/blockchain-development/native_assets)的库。
 
-### [Asset Library](./asset/index.md)
+### [资产库](./asset/index.md)
 
-The [Asset](./asset/index.md) Library provides helper functions for the [SRC-20](https://github.com/FuelLabs/sway-standards/blob/master/SRCs/src-20.md), [SRC-3](https://github.com/FuelLabs/sway-standards/blob/master/SRCs/src-3.md), and [SRC-7](https://github.com/FuelLabs/sway-standards/blob/master/SRCs/src-7.md) standards.
+[资产](./asset/index.md)库为[ SRC-20 ](https://github.com/FuelLabs/sway-standards/blob/master/SRCs/src-20.md)、[ SRC-3 ](https://github.com/FuelLabs/sway-standards/blob/master/SRCs/src-3.md)和 [ SRC-7 ](https://github.com/FuelLabs/sway-standards/blob/master/SRCs/src-7.md)标准提供了辅助函数。
 
-## Access Control and Security Libraries
+## 访问控制和安全库
 
-Access Control and Security Libraries are any libraries that are built and intended to provide additional safety when developing smart contracts.
+访问控制和安全库是任何旨在在开发智能合约时提供额外安全性的库。
 
-### [Ownership Library](./ownership/index.md)
+### [所有权库(ownership)](./ownership/index.md)
 
-The [Ownership](./ownership/index.md) Library is used to apply restrictions on functions such that only a **single** user may call them.
+[所有权(ownership)](./ownership/index.md)库用于对函数应用限制，以便只有一个**单一**用户可以调用它们。
 
-### [Admin Library](./admin/index.md)
+### [管理库(admin)](./admin/index.md)
 
-The [Admin](./admin/index.md) Library is used to apply restrictions on functions such that only a select few users may call them like a whitelist.
+[管理(admin)](./admin/index.md)库用于对函数应用限制，以便只有少数几个用户可以调用它们，就像一个白名单。
 
-### [Pausable Library](./pausable/index.md)
+### [暂停库(pausable)](./pausable/index.md)
 
-The [Pausable](./pausable/index.md) Library allows contracts to implement an emergency stop mechanism.
+[暂停(pausable)](./pausable/index.md)库允许合约实现紧急停止机制。
 
-### [Reentrancy Guard Library](./reentrancy/index.md)
+### [重入防范库(reentrancy)](./reentrancy/index.md)
 
-The [Reentrancy Guard](./reentrancy/index.md) Library is used to detect and prevent reentrancy attacks.
+[重入防范(reentrancy)](./reentrancy/index.md)库用于检测和防止重入攻击。
 
-## Cryptography Libraries
+## 密码学库
 
-Cryptography Libraries are any libraries that provided cryptographic functionality beyond what the std-lib provides.
+密码学库是提供密码功能的库，超出了 std-lib 提供的范围。
 
-### [Bytecode Library](./bytecode/index.md)
+### [字节码库](./bytecode/index.md)
 
-The [Bytecode](./bytecode/index.md) Library is used for on-chain verification and computation of bytecode roots for contracts and predicates.
+[字节码(bytecode)](./bytecode/index.md)库用于在链上验证和计算合约和断言的字节码根。
 
-### [Merkle Library](./merkle/index.md)
+### [Merkle 库](./merkle/index.md)
 
-The [Merkle Proof](./merkle/index.md) Library is used to verify Binary Merkle Trees computed off-chain.
+[Merkle 证明(Merkle Proof)](./merkle/index.md)库用于验证链下计算的二进制默克尔树。
 
-## Math Libraries
+## 数学库
 
-Math Libraries are libraries which provide mathematic functions or number types that are outside of the std-lib's scope.
+数学库是提供数学函数或数字类型的库，超出了 std-lib 的范围。
 
-### [Fixed Point Number Library](./fixed_point/index.md)
+### [定点数库](./fixed_point/index.md)
 
-The [Fixed Point Number](./fixed_point/index.md) Library is an interface to implement fixed-point numbers.
+[定点数](./fixed_point/index.md)库是实现定点数的接口。
 
-### [Signed Integers](./signed_integers/index.md)
+### [有符号整数](./signed_integers/index.md)
 
-The [Signed Integers](./signed_integers/index.md) Library is an interface to implement signed integers.
+[有符号整数](./signed_integers/index.md)库是实现有符号整数的接口。
 
-## Data Structures Libraries
+## 数据结构库
 
-Data Structure Libraries are libraries which provide complex data structures which unlock additional functionality for Smart Contracts.
+数据结构库提供了复杂的数据结构，为智能合约提供了额外的功能。
 
-### [Queue](./queue/index.md)
+### [队列(queue)](./queue/index.md)
 
-The [Queue](./queue/index.md) Library is a linear data structure that provides First-In-First-Out (FIFO) operations.
+[队列(queue)](./queue/index.md)库是一个线性数据结构，提供先进先出（FIFO）操作。

@@ -1,50 +1,50 @@
-# Ownership Library
+# 拥有权库
 
-The Ownership Library provides a way to block anyone other than a **single** "owner" from calling functions. The Ownership Library is often used when needing administrative calls on a contract by a single user.
+拥有权库提供了一种阻止除了**单个**“所有者”之外的任何人调用函数的方法。当需要单个用户对合约进行管理调用时，通常会使用拥有权库。
 
-For implementation details on the Ownership Library please see the [Sway Libs Docs](https://fuellabs.github.io/sway-libs/master/sway_libs/ownership/index.html).
+有关拥有权库的实现详细信息，请参阅[Sway Libs 文档](https://fuellabs.github.io/sway-libs/master/sway_libs/ownership/index.html)。
 
-## Importing the Ownership Library
+## 导入拥有权库
 
-In order to use the Ownership library, Sway Libs and [Sway Standards](https://github.com/FuelLabs/sway-standards) must be added to the `Forc.toml` file and then imported into your Sway project. To add Sway Libs as a dependency to the `Forc.toml` file in your project please see the [Getting Started](../getting_started/index.md). To add Sway Standards as a dependency please see the [Sway Standards Book](https://github.com/FuelLabs/sway-standards).
+要使用拥有权库，必须将 Sway Libs 和[Sway Standards](https://github.com/FuelLabs/sway-standards)添加到`Forc.toml`文件中，然后导入到您的 Sway 项目中。要将 Sway Libs 作为项目的依赖项添加到`Forc.toml`文件中，请参阅[入门指南](../getting_started/index.md)。要将 Sway Standards 作为依赖项添加，请参阅[Sway Standards 手册](https://github.com/FuelLabs/sway-standards)。
 
-To import the Ownership Library and [SRC-5](https://github.com/FuelLabs/sway-standards/blob/master/SRCs/src-5.md) Standard to your Sway Smart Contract, add the following to your Sway file:
+要将拥有权库和[SRC-5](https://github.com/FuelLabs/sway-standards/blob/master/SRCs/src-5.md)标准导入到您的 Sway 智能合约中，请在您的 Sway 文件中添加以下内容：
 
 ```sway
 {{#include ../../../../examples/ownership/src/main.sw:import}}
 ```
 
-## Integrating the Ownership Library into the SRC-5 Standard
+## 将拥有权库集成到 SRC-5 标准中
 
-To implement the [SRC-5](https://github.com/FuelLabs/sway-standards/blob/master/SRCs/src-5.md) standard with the Ownership library, be sure to add the Sway Standards dependency to your contract. The following demonstrates the integration of the Ownership library with the SRC-5 standard.
+要使用拥有权库实现[SRC-5](https://github.com/FuelLabs/sway-standards/blob/master/SRCs/src-5.md)标准，请确保将 Sway Standards 依赖项添加到您的合约中。以下演示了如何将拥有权库与 SRC-5 标准集成。
 
 ```sway
 {{#include ../../../../examples/ownership/src/main.sw:integrate_with_src5}}
 ```
 
-> **NOTE** A constructor method must be implemented to initialize the owner.
+> **注意** 必须实现一个构造函数方法来初始化所有者。
 
-## Basic Functionality
+## 基本功能
 
-### Setting a Contract Owner
+### 设置合约所有者
 
-Once imported, the Ownership Library's functions will be available. To use them initialize the owner for your contract by calling the `initialize_ownership()` function in your own constructor method.
+导入后，拥有权库的函数将可用。通过在您自己的构造函数方法中调用`initialize_ownership()`函数为您的合约初始化所有者。
 
 ```sway
 {{#include ../../../../examples/ownership/src/main.sw:initialize}}
 ```
 
-### Applying Restrictions
+### 应用限制
 
-To restrict a function to only the owner, call the `only_owner()` function.
+要将函数限制为仅所有者，请调用`only_owner()`函数。
 
 ```sway
 {{#include ../../../../examples/ownership/src/main.sw:only_owner}}
 ```
 
-### Checking the Ownership Status
+### 检查所有权状态
 
-To return the ownership state from storage, call the `_owner()` function.
+要从存储中返回所有权状态，请调用`_owner()`函数。
 
 ```sway
 {{#include ../../../../examples/ownership/src/main.sw:state}}

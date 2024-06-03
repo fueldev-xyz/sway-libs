@@ -1,30 +1,30 @@
-# Metadata Functionality
+# 元数据功能
 
-For implementation details on the Asset Library metadata functionality please see the [Sway Libs Docs](https://fuellabs.github.io/sway-libs/master/sway_libs/asset/metadata/index.html).
+有关资产库元数据功能的实现细节，请参阅[Sway Libs 文档](https://fuellabs.github.io/sway-libs/master/sway_libs/asset/metadata/index.html)。
 
-## Importing the Asset Library Metadata Functionality
+## 导入资产库元数据功能
 
-In order to use the Asset Library, Sway Libs and [Sway Standards](https://github.com/FuelLabs/sway-standards) must be added to the `Forc.toml` file and then imported into your Sway project. To add Sway Libs as a dependency to the `Forc.toml` file in your project please see the [Getting Started](../getting_started/index.md). To add Sway Standards as a dependency please see the [Sway Standards Book](https://github.com/FuelLabs/sway-standards).
+要使用资产库，必须将 Sway Libs 和[Sway 标准](https://github.com/FuelLabs/sway-standards)添加到`Forc.toml`文件中，然后导入到您的 Sway 项目中。要将 Sway Libs 作为项目的依赖项添加到`Forc.toml`文件中，请参阅[入门指南](../getting_started/index.md)。要将 Sway 标准添加为依赖项，请参阅[Sway 标准书](https://github.com/FuelLabs/sway-standards)。
 
-To import the Asset Library Base Functionality and [SRC-7](https://github.com/FuelLabs/sway-standards/blob/master/SRCs/src-7.md) Standard to your Sway Smart Contract, add the following to your Sway file:
+要将资产库基本功能和[SRC-7](https://github.com/FuelLabs/sway-standards/blob/master/SRCs/src-7.md)标准导入到您的 Sway 智能合约中，请将以下内容添加到您的 Sway 文件中：
 
-```sway
+\```sway
 {{#include ../../../../examples/asset/metadata_docs/src/main.sw:import}}
-```
+\```
 
-## Integration with the SRC-7 Standard
+## 与 SRC-7 标准的集成
 
-The [SRC-7](https://github.com/FuelLabs/sway-standards/blob/master/SRCs/src-7.md) definition states that the following abi implementation is required for any Native Asset on Fuel:
+[SR-7](https://github.com/FuelLabs/sway-standards/blob/master/SRCs/src-7.md)定义了 Fuel 上的任何原生资产所需的 ABI 实现如下：
 
-```sway
+\```sway
 {{#include ../../../../examples/asset/metadata_docs/src/main.sw:src7_abi}}
-```
+\```
 
-The Asset Library has the following complimentary data type for the [SRC-7](https://github.com/FuelLabs/sway-standards/blob/master/SRCs/src-7.md) standard:
+资产库为[SR-7](https://github.com/FuelLabs/sway-standards/blob/master/SRCs/src-7.md)标准提供了以下补充数据类型：
 
 - `StorageMetadata`
 
-The following additional functionality for the [SRC-7](https://github.com/FuelLabs/sway-standards/blob/master/SRCs/src-7.md)'s `Metadata` type is provided:
+提供了以下附加功能，用于[SR-7](https://github.com/FuelLabs/sway-standards/blob/master/SRCs/src-7.md)的 `Metadata` 类型：
 
 - `as_string()`
 - `is_string()`
@@ -35,37 +35,37 @@ The following additional functionality for the [SRC-7](https://github.com/FuelLa
 - `as_b256()`
 - `is_b256()`
 
-## Setting Up Storage
+## 设置存储
 
-Once imported, the Asset Library's metadata functionality should be available. To use them, be sure to add the storage block bellow to your contract which enables the [SRC-7](https://github.com/FuelLabs/sway-standards/blob/master/SRCs/src-7.md) standard.
+导入后，应该可以使用资产库的元数据功能。要使用它们，请确保将下面的存储块添加到您的合约中，以启用[SR-7](https://github.com/FuelLabs/sway-standards/blob/master/SRCs/src-7.md)标准。
 
-```sway
+\```sway
 {{#include ../../../../examples/asset/metadata_docs/src/main.sw:src7_storage}}
-```
+\```
 
-## Using the `StorageMetadata` Type
+## 使用 `StorageMetadata` 类型
 
-### Setting Metadata
+### 设置元数据
 
-To set some metadata for an Asset, use the `SetAssetMetadata` ABI provided by the Asset Library. Be sure to follow the [SRC-9](https://github.com/FuelLabs/sway-standards/blob/master/SRCs/src-9.md) standard for your `key`. It is recommended that the [Ownership Library](../ownership/index.md) is used in conjunction with the `SetAssetMetadata` ABI to ensure only a single user has permissions to set an Asset's metadata.
+要为资产设置一些元数据，请使用资产库提供的 `SetAssetMetadata` ABI。请务必遵循您的 `key` 的[SR-9](https://github.com/FuelLabs/sway-standards/blob/master/SRCs/src-9.md)标准。建议结合使用[Ownership 库](../ownership/index.md)和 `SetAssetMetadata` ABI，以确保只有一个用户有权限设置资产的元数据。
 
-```sway
+\```sway
 {{#include ../../../../examples/asset/setting_src7_attributes/src/main.sw:setting_src7_attributes}}
-```
+\```
 
-> **NOTE** The `_set_metadata()` function will set the metadata of an asset *unconditionally*. External checks should be applied to restrict the setting of metadata.
+> **注意** `_set_metadata()` 函数将*无条件*设置资产的元数据。应用外部检查以限制元数据的设置。
 
-### Implementing the SRC-7 Standard with StorageMetadata
+### 使用 StorageMetadata 实现 SRC-7 标准
 
-To use the `StorageMetadata` type, simply get the stored metadata with the associated `key` and `AssetId`. The example below shows the implementation of the [SRC-7](https://github.com/FuelLabs/sway-standards/blob/master/SRCs/src-7.md) standard in combination with the Asset Library's `StorageMetadata` type with no user defined restrictions or custom functionality.
+要使用 `StorageMetadata` 类型，只需使用关联的 `key` 和 `AssetId` 获取存储的元数据。下面的示例显示了在没有用户定义的限制或自定义功能的情况下，与资产库的 `StorageMetadata` 类型结合使用的[SR-7](https://github.com/FuelLabs/sway-standards/blob/master/SRCs/src-7.md)标准的实现。
 
-```sway
+\```sway
 {{#include ../../../../examples/asset/basic_src7/src/main.sw:basic_src7}}
-```
+\```
 
-## Using the `Metadata` Extensions
+## 使用 `Metadata` 扩展
 
-The `Metadata` type defined by the [SRC-7](https://github.com/FuelLabs/sway-standards/blob/master/SRCs/src-7.md) standard can be one of 4 states:
+[SR-7](https://github.com/FuelLabs/sway-standards/blob/master/SRCs/src-7.md)标准定义的 `Metadata` 类型可以是以下 4 种状态之一：
 
 ```sway
 pub enum Metadata {
@@ -76,39 +76,39 @@ pub enum Metadata {
 }
 ```
 
-The Asset Library enables the following functionality for the `Metadata` type:
+资产库为 `Metadata` 类型提供了以下功能：
 
-### `is_b256()` and `as_b256()`
+### `is_b256()` 和 `as_b256()`
 
-The `is_b256()` check enables checking whether the `Metadata` type is a `b256`.
-The `as_b256()` returns the `b256` of the `Metadata` type.
+`is_b256()` 检查使您能够检查 `Metadata` 类型是否为 `b256`。
+`as_b256()` 返回 `Metadata` 类型的 `b256`。
 
 ```sway
 {{#include ../../../../examples/asset/metadata_docs/src/main.sw:as_b256}}
 ```
 
-### `is_bytes()` and `as_bytes()`
+### `is_bytes()` 和 `as_bytes()`
 
-The `is_bytes()` check enables checking whether the `Metadata` type is a `Bytes`.
-The `as_bytes()` returns the `Bytes` of the `Metadata` type.
+`is_bytes()` 检查使您能够检查 `Metadata` 类型是否为 `Bytes`。
+`as_bytes()` 返回 `Metadata` 类型的 `Bytes`。
 
 ```sway
 {{#include ../../../../examples/asset/metadata_docs/src/main.sw:as_bytes}}
 ```
 
-### `is_u64()` and `as_u64()`
+### `is_u64()` 和 `as_u64()`
 
-The `is_u64()` check enables checking whether the `Metadata` type is a `u64`.
-The `as_u64()` returns the `u64` of the `Metadata` type.
+`is_u64()` 检查使您能够检查 `Metadata` 类型是否为 `u64`。
+`as_u64()` 返回 `Metadata` 类型的 `u64`。
 
 ```sway
 {{#include ../../../../examples/asset/metadata_docs/src/main.sw:as_u64}}
 ```
 
-### `is_string()` and `as_string()`
+### `is_string()` 和 `as_string()`
 
-The `is_string()` check enables checking whether the `Metadata` type is a `String`.
-The `as_string()` returns the `String` of the `Metadata` type.
+`is_string()` 检查使您能够检查 `Metadata` 类型是否为 `String`。
+`as_string()` 返回 `Metadata` 类型的 `String`。
 
 ```sway
 {{#include ../../../../examples/asset/metadata_docs/src/main.sw:as_string}}

@@ -1,39 +1,39 @@
-# Pausable Library
+# 暂停库
 
-The Pausable library allows contracts to implement an emergency stop mechanism. This can be useful for scenarios such as having an emergency switch to freeze all transactions in the event of a large bug.
+暂停库允许合约实现紧急停止机制。这在诸如出现大型错误时需要一个紧急开关以冻结所有交易的情况下非常有用。
 
-It is highly encouraged to use the [Ownership Library](../ownership/index.md) in combination with the Pausable Library to ensure that only a single administrative user has the ability to pause your contract.
+强烈建议将[拥有权库](../ownership/index.md)与暂停库结合使用，以确保只有单个管理员用户有权暂停您的合约。
 
-For implementation details on the Pausable Library please see the [Sway Libs Docs](https://fuellabs.github.io/sway-libs/master/sway_libs/pausable/index.html).
+有关暂停库的实现详细信息，请参阅[Sway Libs 文档](https://fuellabs.github.io/sway-libs/master/sway_libs/pausable/index.html)。
 
-## Importing the Pausable Library
+## 导入暂停库
 
-In order to use the Pausable library, Sway Libs must be added to the `Forc.toml` file and then imported into your Sway project. To add Sway Libs as a dependency to the `Forc.toml` file in your project please see the [Getting Started](../getting_started/index.md).
+要使用暂停库，必须将 Sway Libs 添加到`Forc.toml`文件中，然后将其导入到您的 Sway 项目中。要将 Sway Libs 作为项目的依赖项添加到`Forc.toml`文件中，请参阅[入门指南](../getting_started/index.md)。
 
-To import the Pausable Library to your Sway Smart Contract, add the following to your Sway file:
+要将暂停库导入到您的 Sway 智能合约中，请在您的 Sway 文件中添加以下内容：
 
 ```sway
 {{#include ../../../../examples/pausable/pausable/src/main.sw:import}}
 ```
 
-## Basic Functionality
+## 基本功能
 
-### Implementing the `Pausable` abi
+### 实现`Pausable` abi
 
-The Pausable Library has two states:
+暂停库有两种状态：
 
 - `Paused`
 - `Unpaused`
 
-By default, your contract will start in the `Unpaused` state. To pause your contract, you may call the `_pause()` function. The example below provides a basic pausable contract using the Pausable Library's `Pausable` abi without any restrictions such as an administrator.
+默认情况下，您的合约将从`Unpaused`状态开始。要暂停您的合约，您可以调用`_pause()`函数。下面的示例提供了一个使用 Pausable 库的基本可暂停合约，其中使用了 Pausable 库的`Pausable` abi，但没有任何限制，如管理员。
 
 ```sway
 {{#include ../../../../examples/pausable/pausable/src/main.sw:pausable_impl}}
 ```
 
-## Applying Paused Restrictions
+## 应用暂停限制
 
-When developing a contract, you may want to lock functions down to a specific state. To do this, you may call either of the `require_paused()` or `require_not_paused()` functions. The example below shows these functions in use.
+在开发合约时，您可能希望将函数锁定到特定状态。为此，您可以调用`require_paused()`或`require_not_paused()`函数之一。下面的示例展示了这些函数的使用。
 
 ```sway
 {{#include ../../../../examples/pausable/pausable/src/main.sw:require_paused}}
@@ -43,11 +43,11 @@ When developing a contract, you may want to lock functions down to a specific st
 {{#include ../../../../examples/pausable/pausable/src/main.sw:require_not_paused}}
 ```
 
-## Using the Ownership Library with the Pausable Library
+## 使用拥有权库与暂停库
 
-It is highly recommended to integrate the [Ownership Library](../ownership/index.md) with the Pausable Library and apply restrictions the `pause()` and `unpause()` functions. This will ensure that only a single user may pause and unpause a contract in cause of emergency. Failure to apply this restriction will allow any user to obstruct a contract's functionality.
+强烈建议将[拥有权库](../ownership/index.md)与暂停库结合使用，并将限制应用于`pause()`和`unpause()`函数。这将确保只有单个用户在紧急情况下才能暂停和取消暂停合约。如果不应用此限制，将允许任何用户阻碍合约的功能。
 
-The follow example implements the `Pausable` abi and applies restrictions to it's pause/unpause functions. The owner of the contract must be set in an constructor defined by `MyConstructor` in this example.
+以下示例实现了`Pausable` abi，并对其暂停/取消暂停函数应用了限制。在此示例中，合约的所有者必须在一个名为`MyConstructor`的构造函数中设置。
 
 ```sway
 {{#include ../../../../examples/pausable/pausable_with_ownership/src/main.sw:impl_with_ownership}}

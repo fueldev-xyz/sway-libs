@@ -1,70 +1,70 @@
-# Admin Library
+# 管理员库
 
-The Admin library provides a way to block users without an "administrative status" from calling functions within a contract. The Admin Library differs from the [Ownership Library](../ownership/index.md) as multiple users may have administrative status. The Admin Library is often used when needing administrative calls on a contract that involve multiple users or a whitelist.
+管理员库提供了一种阻止没有“管理员状态”的用户调用合约内函数的方法。管理员库与[所有权库](../ownership/index.md)不同之处在于，可以有多个用户具有管理员状态。管理员库通常用于需要涉及多个用户或白名单的合约中进行管理调用。
 
-This library extends the [Ownership Library](../ownership/index.md). The Ownership library must be imported and used to enable the Admin library. Only the contract's owner may add and remove administrative users.
+此库扩展了[所有权库](../ownership/index.md)。必须导入并使用所有权库才能启用管理员库。只有合约的所有者才能添加和删除管理员用户。
 
-For implementation details on the Admin Library please see the [Sway Libs Docs](https://fuellabs.github.io/sway-libs/master/sway_libs/admin/index.html).
+有关管理员库的实现详细信息，请参阅[Sway Libs 文档](https://fuellabs.github.io/sway-libs/master/sway_libs/admin/index.html)。
 
-## Importing the Admin Library
+## 导入管理员库
 
-In order to use the Admin Library, Sway Libs must be added to the `Forc.toml` file and then imported into your Sway project. To add Sway Libs as a dependency to the `Forc.toml` file in your project please see the [Getting Started](../getting_started/index.md).
+要使用管理员库，必须将 Sway Libs 添加到`Forc.toml`文件中，然后导入到您的 Sway 项目中。要将 Sway Libs 作为项目的依赖项添加到`Forc.toml`文件中，请参阅[入门指南](../getting_started/index.md)。
 
-To import the Admin Library, be sure to include both the Admin and Ownership Libraries in your import statements.
+要导入管理员库，请确保在导入语句中同时包含管理员库和所有权库。
 
 ```sway
 {{#include ../../../../examples/admin/src/main.sw:import}}
 ```
 
-## Integrating the Admin Library into the Ownership Library
+## 将管理员库集成到所有权库中
 
-To use the Admin library, be sure to set a contract owner for your contract. The following demonstrates setting a contract owner using the [Ownership Library](../ownership/).
+要使用管理员库，请确保为您的合约设置了合约所有者。以下演示了如何使用[所有权库](../ownership/)设置合约所有者。
 
 ```sway
 {{#include ../../../../examples/admin/src/owner_integration.sw:ownership_integration}}
 ```
 
-## Basic Functionality
+## 基本功能
 
-### Adding an Admin
+### 添加管理员
 
-To add a new admin to a contract, call the `add_admin()` function.
+要向合约添加新的管理员，请调用`add_admin()`函数。
 
 ```sway
 {{#include ../../../../examples/admin/src/main.sw:add_admin}}
 ```
 
-> **NOTE** Only the contract's owner may call this function. Please see the example above to set a contract owner.
+> **注意** 只有合约的所有者才能调用此函数。请参阅上面的示例以设置合约所有者。
 
-### Removing an Admin
+### 删除管理员
 
-To remove an admin from a contract, call the `revoke_admin()` function.
+要从合约中删除管理员，请调用`revoke_admin()`函数。
 
 ```sway
 {{#include ../../../../examples/admin/src/main.sw:remove_admin}}
 ```
 
-> **NOTE** Only the contract's owner may call this function. Please see the example above to set a contract owner.
+> **注意** 只有合约的所有者才能调用此函数。请参阅上面的示例以设置合约所有者。
 
-### Applying Restrictions
+### 应用限制
 
-To restrict a function to only an admin, call the `only_admin()` function.
+要将函数限制为仅限管理员，请调用`only_admin()`函数。
 
 ```sway
 {{#include ../../../../examples/admin/src/main.sw:only_admin}}
 ```
 
-> **NOTE:** Admins and the contract's owner are independent of one another. `only_admin()` will revert if called by the contract's owner.
+> **注意：** 管理员和合约所有者彼此独立。如果合约所有者调用了`only_admin()`，它将会回滚。
 
-To restrict a function to only an admin or the contract's owner, call the `only_owner_or_admin()` function.
+要将函数限制为仅限管理员或合约所有者，请调用`only_owner_or_admin()`函数。
 
 ```sway
 {{#include ../../../../examples/admin/src/main.sw:both_admin}}
 ```
 
-### Checking Admin Status
+### 检查管理员状态
 
-To check the administrative privileges of a user, call the `is_admin()` function.
+要检查用户的管理权限，请调用`is_admin()`函数。
 
 ```sway
 {{#include ../../../../examples/admin/src/main.sw:check_admin}}

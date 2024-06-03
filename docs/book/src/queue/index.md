@@ -1,56 +1,56 @@
-# Queue Library
+# 队列库
 
-A Queue is a linear structure which follows the First-In-First-Out (FIFO) principle. This means that the elements added first are the ones that get removed first.
+队列是一种遵循先进先出（FIFO）原则的线性结构。这意味着先添加的元素是先被移除的元素。
 
-For implementation details on the Queue Library please see the [Sway Libs Docs](https://fuellabs.github.io/sway-libs/master/sway_libs/queue/index.html).
+有关队列库的实现细节，请参阅[Sway Libs 文档](https://fuellabs.github.io/sway-libs/master/sway_libs/queue/index.html)。
 
-## Importing the Queue Library
+## 导入队列库
 
-In order to use the Queue Library, Sway Libs must be added to the `Forc.toml` file and then imported into your Sway project. To add Sway Libs as a dependency to the `Forc.toml` file in your project please see the [Getting Started](../getting_started/index.md).
+要使用队列库，必须将 Sway Libs 添加到`Forc.toml`文件中，然后将其导入到您的 Sway 项目中。要将 Sway Libs 作为项目的依赖项添加到`Forc.toml`文件中，请参阅[入门指南](../getting_started/index.md)。
 
-To import the Queue Library to your Sway Smart Contract, add the following to your Sway file:
+要将队列库导入到您的 Sway 智能合约中，请在您的 Sway 文件中添加以下内容：
 
 ```sway
 {{#include ../../../../examples/queue/src/main.sw:import}}
 ```
 
-## Basic Functionality
+## 基本功能
 
-### Instantiating a New Queue
+### 实例化新队列
 
-Once the `Queue` has been imported, you can create a new queue instance by calling the `new` function.
+一旦导入了`Queue`，您可以通过调用`new`函数创建一个新的队列实例。
 
 ```sway
 {{#include ../../../../examples/queue/src/main.sw:instantiate}}
 ```
 
-## Enqueuing elements
+## 入队元素
 
-Adding elements to the `Queue` can be done using the `enqueue` function.
+使用`enqueue`函数可以向`Queue`添加元素。
 
 ```sway
 {{#include ../../../../examples/queue/src/main.sw:enqueue}}
 ```
 
-### Dequeuing Elements
+### 出队元素
 
-To remove elements from the `Queue`, the `dequeue` function is used. This function follows the FIFO principle.
+要从`Queue`中移除元素，使用`dequeue`函数。此函数遵循 FIFO 原则。
 
 ```sway
 {{#include ../../../../examples/queue/src/main.sw:dequeue}}
 ```
 
-### Fetching the Head Element
+### 获取头部元素
 
-To retrieve the element at the head of the `Queue` without removing it, you can use the `peek` function.
+要检索`Queue`头部的元素而不将其删除，可以使用`peek`函数。
 
 ```sway
 {{#include ../../../../examples/queue/src/main.sw:peek}}
 ```
 
-### Checking the Queue's Length
+### 检查队列的长度
 
-The `is_empty` and `len` functions can be used to check if the queue is empty and to get the number of elements in the queue respectively.
+可以使用`is_empty`和`len`函数来检查队列是否为空，并分别获取队列中的元素数量。
 
 ```sway
 {{#include ../../../../examples/queue/src/main.sw:length}}

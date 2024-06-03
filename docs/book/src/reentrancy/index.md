@@ -1,46 +1,45 @@
-# Reentrancy Guard Library
+# 重入保护库
 
-The Reentrancy Guard Library provides an API to check for and disallow reentrancy on a contract. A reentrancy attack happens when a function is externally invoked during its execution, allowing it to be run multiple times in a single transaction.
+重入保护库提供了一个 API 来检查并防止合约的重入。重入攻击发生在一个函数在执行过程中被外部调用，使得它可以在单个事务中被多次运行。
 
-The reentrancy check is used to check if a contract ID has been called more than
-once in the current call stack.
+重入检查用于检查当前调用堆栈中是否已经调用了一个合约 ID。
 
-A reentrancy, or "recursive call" attack can cause some functions to behave in unexpected ways. This can be prevented by asserting a contract has not yet been called in the current transaction. An example can be found [here](https://swcregistry.io/docs/SWC-107).
+重入或“递归调用”攻击可能会导致某些函数以意外的方式行为。这可以通过断言在当前事务中尚未调用合约来防止。一个示例可以在[这里](https://swcregistry.io/docs/SWC-107)找到。
 
-For implementation details on the Reentrancy Guard Library please see the [Sway Libs Docs](https://fuellabs.github.io/sway-libs/master/sway_libs/reentrancy/index.html).
+有关重入保护库的实现细节，请参阅[Sway Libs 文档](https://fuellabs.github.io/sway-libs/master/sway_libs/reentrancy/index.html)。
 
-## Known Issues
+## 已知问题
 
-While this can protect against both single-function reentrancy and cross-function reentrancy attacks, it WILL NOT PREVENT a cross-contract reentrancy attack.
+虽然这可以防止单函数重入和跨函数重入攻击，但它将无法阻止跨合约重入攻击。
 
-## Importing the Reentrancy Guard Library
+## 导入重入保护库
 
-In order to use the Reentrancy Guard library, Sway Libs must be added to the `Forc.toml` file and then imported into your Sway project. To add Sway Libs as a dependency to the `Forc.toml` file in your project please see the [Getting Started](../getting_started/index.md).
+要使用重入保护库，必须将 Sway Libs 添加到`Forc.toml`文件中，然后导入到您的 Sway 项目中。要将 Sway Libs 作为项目的依赖项添加到`Forc.toml`文件中，请参阅[入门指南](../getting_started/index.md)。
 
-To import the Reentrancy Guard Library to your Sway Smart Contract, add the following to your Sway file:
+要将重入保护库导入到您的 Sway 智能合约中，请在您的 Sway 文件中添加以下内容：
 
 ```sway
 {{#include ../../../../examples/reentrancy/src/main.sw:import}}
 ```
 
-## Basic Functionality
+## 基本功能
 
-Once imported, using the Reentrancy Library can be done by calling one of the two functions:
+一旦导入，就可以通过调用以下两个函数之一来使用重入保护库：
 
 - `is_reentrant() -> bool`
 - `reentrancy_guard()`
 
-### Using the Reentrancy Guard
+### 使用重入保护
 
-Once imported, using the Reentrancy Guard Library can be used by calling the `reentrancy_guard()` in your Sway Smart Contract. The following shows a Sway Smart Contract that applies the Reentrancy Guard Library:
+一旦导入，就可以通过在您的 Sway 智能合约中调用`reentrancy_guard()`来使用重入保护库。以下展示了一个应用了重入保护库的 Sway 智能合约示例：
 
 ```sway
 {{#include ../../../../examples/reentrancy/src/main.sw:reentrancy_guard}}
 ```
 
-### Checking Reentrancy Status
+### 检查重入状态
 
-To check if the current caller is a reentrant, you may call the `is_reentrant()` function.
+要检查当前调用者是否为重入调用者，可以调用`is_reentrant()`函数。
 
 ```sway
 {{#include ../../../../examples/reentrancy/src/main.sw:is_reentrant}}

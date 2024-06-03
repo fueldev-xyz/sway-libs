@@ -1,86 +1,86 @@
-# Fixed Point Number Library
+# 固定小数点数库
 
-The Fixed Point Number Library provides a library to use fixed-point numbers in Sway. It has 3 distinct unsigned types: `UFP32`, `UFP64` and `UFP128` as well as 3 signed types `IFP64`, `IFP128` and `IFP256`. These types are stack allocated.
+固定小数点数库提供了在 Sway 中使用固定小数点数的库。它有 3 种不同的无符号类型：`UFP32`、`UFP64`和`UFP128`，以及 3 种有符号类型`IFP64`、`IFP128`和`IFP256`。这些类型是栈分配的。
 
-This type is stored as a `u32`, `u64` or `U128` under the hood. Therefore the size can be known at compile time and the length is static.
+这种类型在底层存储为`u32`、`u64`或`U128`。因此，大小可以在编译时知道，长度是静态的。
 
-For implementation details on the Fixed Point Number Library please see the [Sway Libs Docs](https://fuellabs.github.io/sway-libs/master/sway_libs/fixed_point/index.html).
+有关固定小数点数库的实现详细信息，请参阅[Sway Libs 文档](https://fuellabs.github.io/sway-libs/master/sway_libs/fixed_point/index.html)。
 
-## Importing the Fixed Point Number Library
+## 导入固定小数点数库
 
-In order to use the Fixed Point Number Library, Sway Libs must be added to the `Forc.toml` file and then imported into your Sway project. To add Sway Libs as a dependency to the `Forc.toml` file in your project please see the [Getting Started](../getting_started/index.md).
+要使用固定小数点数库，必须将 Sway Libs 添加到`Forc.toml`文件中，然后将其导入到您的 Sway 项目中。要将 Sway Libs 添加为项目的依赖项，请参阅[入门](../getting_started/index.md)。
 
-To import the Fixed Point Number Library to your Sway Smart Contract, add the following to your Sway file:
+要将固定小数点数库导入到您的 Sway 智能合约中，请将以下内容添加到您的 Sway 文件中：
 
 ```sway
 {{#include ../../../../examples/fixed_point/src/main.sw:import}}
 ```
 
-## Supported Fixed Point Numbers
+## 支持的固定小数点数
 
-### Signed Fixed Point Numbers
+### 有符号固定小数点数
 
-We currently support the following signed Fixed Point numbers:
+我们目前支持以下有符号固定小数点数：
 
 - `IFP64`
 - `IFP128`
 - `IFP256`
 
-In order to use the `IFP64`, `IFP128` or `IFP256` types, import them into your Sway project like so:
+要使用`IFP64`、`IFP128`或`IFP256`类型，请像这样将其导入到您的 Sway 项目中：
 
 ```sway
 {{#include ../../../../examples/fixed_point/src/main.sw:import_ifp}}
 ```
 
-### Unsigned Fixed Point Numbers
+### 无符号固定小数点数
 
-We currently support the following unsigned Fixed Point numbers:
+我们目前支持以下无符号固定小数点数：
 
 - `UFP32`
 - `UFP64`
 - `UFP128`
 
-In order to use the `UFP32`, `UFP64` or `UFP128` types, import them into your Sway project like so:
+要使用`UFP32`、`UFP64`或`UFP128`类型，请像这样将其导入到您的 Sway 项目中：
 
 ```sway
 {{#include ../../../../examples/fixed_point/src/main.sw:import_ufp}}
 ```
 
-## Basic Functionality
+## 基本功能
 
-### Instantiating a New Fixed Point Number
+### 实例化新的固定小数点数
 
-Once imported, any signed or unsigned Fixed Point number type can be instantiated by defining a new variable and calling the `from` function.
+一旦导入，任何有符号或无符号固定小数点数类型都可以通过定义一个新变量并调用`from`函数来实例化。
 
 ```sway
 {{#include ../../../../examples/fixed_point/src/main.sw:instantiating_ufp}}
 ```
 
-### Basic mathematical Functions
+### 基本数学函数
 
-Basic arithmetic operations are working as usual.
+基本算术运算像平常一样工作。
 
 ```sway
 {{#include ../../../../examples/fixed_point/src/main.sw:mathematical_ops}}
 ```
 
-### Advanced mathematical Functions Supported
+### 支持的高级数学函数
 
-We currently support the following advanced mathematical functions:
+我们目前支持以下高级数学函数：
 
-#### Exponential
+#### 指数
 
 ```sway
 {{#include ../../../../examples/fixed_point/src/main.sw:exponential}}
 ```
 
-#### Square Root
+#### 平方根
 
 ```sway
 {{#include ../../../../examples/fixed_point/src/main.sw:square_root}}
 ```
 
-#### Power
+#### 幂
 
 ```sway
 {{#include ../../../../examples/fixed_point/src/main.sw:power}}
